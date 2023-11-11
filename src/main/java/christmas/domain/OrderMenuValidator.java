@@ -15,6 +15,7 @@ class OrderMenuValidator {
         totalOrderNumber = 0;
         validateFormat(input);
         validateDetail(input);
+        validateOnlyDrink();
     }
 
     private void validateFormat(String input) {
@@ -88,6 +89,12 @@ class OrderMenuValidator {
     private void validateTotalOrderNumber(int input) {
         totalOrderNumber += input;
         if (totalOrderNumber > 20) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateOnlyDrink() {
+        if(Menu.isOnlyDrink(totalOrderMenu)) {
             throw new IllegalArgumentException();
         }
     }
