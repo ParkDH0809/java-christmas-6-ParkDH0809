@@ -1,5 +1,6 @@
 package christmas.domain.customer;
 
+import christmas.constants.InputRule;
 import christmas.domain.Menu;
 
 public class OrderMenu {
@@ -14,7 +15,7 @@ public class OrderMenu {
     }
 
     private String[] splitInput(String input) {
-        return input.split("-");
+        return input.split(InputRule.FOOD_NUMBER_SEPARATOR.getString());
     }
 
     public static OrderMenu from(String input) {
