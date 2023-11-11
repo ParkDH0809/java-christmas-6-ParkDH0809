@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constants.ExceptionMessage;
+
 public class VisitDate {
 
     private static final int EVENT_MIN_DATE = 1;
@@ -24,17 +26,17 @@ public class VisitDate {
         try {
             Integer.parseInt(input);
         } catch(NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_DATE.getMessage());
         }
     }
 
     private void validateRange(String input) {
         int date = Integer.parseInt(input);
         if(date < EVENT_MIN_DATE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_DATE.getMessage());
         }
         if (date > EVENT_MAX_DATE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_DATE.getMessage());
         }
     }
 

@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.constants.ExceptionMessage;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.PatternSyntaxException;
@@ -25,7 +26,7 @@ class OrderMenuValidator {
 
     private void validateContainsSpace(String input) {
         if(input.contains(" ")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
 
@@ -33,7 +34,7 @@ class OrderMenuValidator {
         try {
             input.split(separator);
         } catch (PatternSyntaxException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
 
@@ -56,13 +57,13 @@ class OrderMenuValidator {
 
     private void validateContains(String input) {
         if(!Menu.contains(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
 
     private void validateDuplicate(String input) {
         if (totalOrderMenu.contains(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
         totalOrderMenu.add(input);
     }
@@ -79,23 +80,23 @@ class OrderMenuValidator {
 
     private void validateRange(int input) {
         if (input < 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
         if (input > 20) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_ORDER_NUMBER.getMessage());
         }
     }
 
     private void validateTotalOrderNumber(int input) {
         totalOrderNumber += input;
         if (totalOrderNumber > 20) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_ORDER_NUMBER.getMessage());
         }
     }
 
     private void validateOnlyDrink() {
         if(Menu.isOnlyDrink(totalOrderMenu)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_ONLY_DRINK.getMessage());
         }
     }
 }
