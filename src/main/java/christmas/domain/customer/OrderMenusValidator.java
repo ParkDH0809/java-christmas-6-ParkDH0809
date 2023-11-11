@@ -3,7 +3,9 @@ package christmas.domain.customer;
 import christmas.constants.ExceptionMessage;
 import christmas.constants.InputRule;
 import christmas.domain.Menu;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.PatternSyntaxException;
 
 public class OrderMenusValidator {
@@ -28,6 +30,7 @@ public class OrderMenusValidator {
 
     void validateOther(List<OrderMenu> orderMenus) {
         validateOnlyDrink(orderMenus);
+        validateDuplicate(orderMenus);
         validateTotalOrderNumber(orderMenus);
     }
 
@@ -42,6 +45,16 @@ public class OrderMenusValidator {
 
     private boolean isDrink(OrderMenu orderMenu) {
         return orderMenu.getMenuCategory() == Menu.DRINK;
+    }
+
+    private void validateDuplicate(List<OrderMenu> orderMenus) {
+        Set<String> set = new HashSet<>();
+        for (OrderMenu orderMenu : orderMenus) {
+            set.add(orderMenu.getMenuName());
+        }
+        if(set.size() != orderMenus.size()) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
+        }
     }
 
     private void validateTotalOrderNumber(List<OrderMenu> orderMenus) {
