@@ -1,8 +1,8 @@
 package christmas.controller;
 
-import christmas.domain.Customer;
-import christmas.domain.OrderMenu;
-import christmas.domain.VisitDate;
+import christmas.domain.customer.Customer;
+import christmas.domain.customer.OrderMenu;
+import christmas.domain.customer.VisitDate;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 

@@ -1,6 +1,7 @@
-package christmas.domain;
+package christmas.domain.customer;
 
 import christmas.constants.ExceptionMessage;
+import christmas.domain.Menu;
 import java.util.HashMap;
 import java.util.regex.PatternSyntaxException;
 
@@ -9,7 +10,7 @@ class OrderMenuValidator {
     private static final String FOOD_NUMBER_SEPARATOR = "-";
     private static final int MIN_ORDER_NUMBER = 1;
     private static final int MAX_ORDER_NUMBER = 20;
-    
+
     private HashMap<String, Integer> verifiedOrder;
 
     HashMap<String, Integer> validate(String input) {
