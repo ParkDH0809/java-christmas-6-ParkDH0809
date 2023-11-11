@@ -2,7 +2,6 @@ package christmas.domain;
 
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Set;
 
 public enum Menu {
     APPETIZER(Map.of(
@@ -32,8 +31,10 @@ public enum Menu {
                 .anyMatch(menu -> menu.menu.containsKey(menuName));
     }
 
-    public static boolean isOnlyDrink(Set<String> menuNames) {
-        return menuNames.stream()
-                .allMatch(DRINK.menu::containsKey);
+    public static Menu getMenuCategory(String menuName) {
+        return Arrays.stream(Menu.values())
+                .filter(menu -> menu.menu.containsKey(menuName))
+                .findFirst()
+                .orElse(null);
     }
 }
