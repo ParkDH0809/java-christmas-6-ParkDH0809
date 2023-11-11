@@ -21,11 +21,16 @@ public class OrderMenu {
         return new OrderMenu(input);
     }
 
-    public Menu getMenuCategory() {
-        return Menu.getMenuCategory(menuName);
+
+    public String getMenuName() {
+        return menuName;
     }
 
     public int getOrderNumber() {
         return orderNumber;
+    }
+
+    public Menu getMenuCategory() {
+        return Menu.getMenuCategory(menuName);
     }
 }

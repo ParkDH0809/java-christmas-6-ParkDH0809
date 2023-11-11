@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderMenus {
-    List<OrderMenu> orderMenus;
+     private final List<OrderMenu> orderMenus;
     private OrderMenus(String input) {
         OrderMenusValidator orderMenusValidator = new OrderMenusValidator();
         orderMenusValidator.validate(input);
@@ -23,5 +23,9 @@ public class OrderMenus {
 
     public static OrderMenus from(String input) {
         return new OrderMenus(input);
+    }
+
+    public List<OrderMenu> getOrderMenus() {
+        return orderMenus;
     }
 }

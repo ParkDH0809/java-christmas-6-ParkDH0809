@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.customer.Customer;
+import christmas.domain.customer.OrderMenu;
 import christmas.domain.customer.OrderMenus;
 import christmas.domain.customer.VisitDate;
 import christmas.view.InputView;
@@ -13,6 +14,7 @@ public class ChristmasController {
     public void startProgram() {
         Customer customer = receiveCustomer();
         printEventPreviewPhrase(customer);
+        printOrderMenu(customer);
     }
 
     private Customer receiveCustomer() {
@@ -29,5 +31,12 @@ public class ChristmasController {
 
     private void printEventPreviewPhrase(Customer customer) {
         outputView.outputEventPreviewPhrase(customer.visitDate());
+    }
+
+    private void printOrderMenu(Customer customer) {
+        outputView.outputOrderMenuTitle();
+        for (OrderMenu orderMenu : customer.orderMenus()) {
+            outputView.outputOrderMenu(orderMenu.getMenuName(), orderMenu.getOrderNumber());
+        }
     }
 }

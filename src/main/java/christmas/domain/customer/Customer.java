@@ -1,5 +1,7 @@
 package christmas.domain.customer;
 
+import java.util.List;
+
 public class Customer {
     private final VisitDate visitDate;
     private final OrderMenus orderMenus;
@@ -15,5 +17,9 @@ public class Customer {
 
     public int visitDate() {
         return visitDate.visitDate();
+    }
+
+    public List<OrderMenu> orderMenus() {
+        return orderMenus.getOrderMenus();
     }
 }
