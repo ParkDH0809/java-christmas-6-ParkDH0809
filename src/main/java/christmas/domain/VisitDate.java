@@ -1,0 +1,44 @@
+package christmas.domain;
+
+public class VisitDate {
+
+    private static final int EVENT_MIN_DATE = 1;
+    private static final int EVENT_MAX_DATE = 31;
+    private int visitDate;
+
+    private VisitDate(String input) {
+        validate(input);
+        this.visitDate = stringToInt(input);
+    }
+
+    public static VisitDate from(String input) {
+        return new VisitDate(input);
+    }
+
+    private void validate(String input) {
+        validateNumber(input);
+        validateRange(input);
+    }
+
+    private void validateNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRange(String input) {
+        int date = Integer.parseInt(input);
+        if(date < EVENT_MIN_DATE) {
+            throw new IllegalArgumentException();
+        }
+        if (date > EVENT_MAX_DATE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private int stringToInt(String input) {
+        return Integer.parseInt(input);
+    }
+}
