@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public enum Menu {
@@ -23,5 +24,10 @@ public enum Menu {
     private final Map<String, Integer> menu;
     Menu(Map<String, Integer> menu) {
         this.menu = menu;
+    }
+
+    public static boolean contains(String menuName) {
+        return Arrays.stream(Menu.values())
+                .anyMatch(menu -> menu.menu.containsKey(menuName));
     }
 }
