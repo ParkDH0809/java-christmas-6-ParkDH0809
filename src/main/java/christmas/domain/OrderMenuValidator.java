@@ -1,22 +1,24 @@
 package christmas.domain;
 
 import christmas.constants.ExceptionMessage;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
 import java.util.regex.PatternSyntaxException;
 
 class OrderMenuValidator {
     private static final String MENU_SEPARATOR = ",";
     private static final String FOOD_NUMBER_SEPARATOR = "-";
 
-    private Set<String> totalOrderMenu;
-    private int totalOrderNumber;
-    void validate(String input) {
-        totalOrderMenu = new HashSet<>();
-        totalOrderNumber = 0;
+    private HashMap<String, Integer> verifiedOrder;
+
+    HashMap<String, Integer> validate(String input) {
+        verifiedOrder = new HashMap<>();
+
         validateFormat(input);
         validateDetail(input);
         validateOnlyDrink();
+        validateTotalOrderNumber();
+
+        return verifiedOrder;
     }
 
     private void validateFormat(String input) {
@@ -48,31 +50,30 @@ class OrderMenuValidator {
     private void validateContent(String[] detail) {
         validateOrderMenu(detail[0]);
         validateOrderNumber(detail[1]);
+        verifiedOrder.put(detail[0], Integer.parseInt(detail[1]));
     }
 
     private void validateOrderMenu(String input) {
-        validateContains(input);
+        validateExistingMenu(input);
         validateDuplicate(input);
     }
 
-    private void validateContains(String input) {
+    private void validateExistingMenu(String input) {
         if(!Menu.contains(input)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
 
     private void validateDuplicate(String input) {
-        if (totalOrderMenu.contains(input)) {
+        if (verifiedOrder.containsKey(input)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
-        totalOrderMenu.add(input);
     }
 
     private void validateOrderNumber(String input) {
         try {
             int order = Integer.parseInt(input);
             validateRange(order);
-            validateTotalOrderNumber(order);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
@@ -87,15 +88,18 @@ class OrderMenuValidator {
         }
     }
 
-    private void validateTotalOrderNumber(int input) {
-        totalOrderNumber += input;
-        if (totalOrderNumber > 20) {
+    private void validateTotalOrderNumber() {
+        if(isTotalOrderNumberOverThanMaxOrderNumber()) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_ORDER_NUMBER.getMessage());
         }
     }
 
+    private boolean isTotalOrderNumberOverThanMaxOrderNumber() {
+        return verifiedOrder.values().stream().mapToInt(Integer::intValue).sum() > 20;
+    }
+
     private void validateOnlyDrink() {
-        if(Menu.isOnlyDrink(totalOrderMenu)) {
+        if(Menu.isOnlyDrink(verifiedOrder.keySet())) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_ONLY_DRINK.getMessage());
         }
     }

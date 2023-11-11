@@ -1,8 +1,11 @@
 package christmas.domain;
 
+import java.util.HashMap;
+
 public class OrderMenu {
+    private HashMap<String, Integer> orderContents;
     private OrderMenu(String input) {
-        new OrderMenuValidator().validate(input);
+        orderContents = new OrderMenuValidator().validate(input);
     }
 
     public static OrderMenu from(String input) {
