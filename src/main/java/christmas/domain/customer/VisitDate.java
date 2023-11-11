@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.customer;
 
 import christmas.constants.ExceptionMessage;
 
@@ -6,7 +6,7 @@ public class VisitDate {
 
     private static final int EVENT_MIN_DATE = 1;
     private static final int EVENT_MAX_DATE = 31;
-    private int visitDate;
+    private final int visitDate;
 
     private VisitDate(String input) {
         validate(input);
@@ -44,7 +44,7 @@ public class VisitDate {
         return Integer.parseInt(input);
     }
 
-    public int visitDate() {
+    int visitDate() {
         return visitDate;
     }
 }

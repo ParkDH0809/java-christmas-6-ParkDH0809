@@ -1,8 +1,8 @@
 package christmas.domain.customer;
 
 public class Customer {
-    private VisitDate visitDate;
-    private OrderMenu orderMenu;
+    private final VisitDate visitDate;
+    private final OrderMenu orderMenu;
 
     private Customer(VisitDate visitDate, OrderMenu orderMenu) {
         this.visitDate = visitDate;
