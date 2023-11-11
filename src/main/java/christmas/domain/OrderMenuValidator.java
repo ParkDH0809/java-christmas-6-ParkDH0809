@@ -7,7 +7,9 @@ import java.util.regex.PatternSyntaxException;
 class OrderMenuValidator {
     private static final String MENU_SEPARATOR = ",";
     private static final String FOOD_NUMBER_SEPARATOR = "-";
-
+    private static final int MIN_ORDER_NUMBER = 1;
+    private static final int MAX_ORDER_NUMBER = 20;
+    
     private HashMap<String, Integer> verifiedOrder;
 
     HashMap<String, Integer> validate(String input) {
@@ -80,10 +82,10 @@ class OrderMenuValidator {
     }
 
     private void validateRange(int input) {
-        if (input < 1) {
+        if (input < MIN_ORDER_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
-        if (input > 20) {
+        if (input > MAX_ORDER_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_ORDER_NUMBER.getMessage());
         }
     }
@@ -95,7 +97,7 @@ class OrderMenuValidator {
     }
 
     private boolean isTotalOrderNumberOverThanMaxOrderNumber() {
-        return verifiedOrder.values().stream().mapToInt(Integer::intValue).sum() > 20;
+        return verifiedOrder.values().stream().mapToInt(Integer::intValue).sum() > MAX_ORDER_NUMBER;
     }
 
     private void validateOnlyDrink() {
