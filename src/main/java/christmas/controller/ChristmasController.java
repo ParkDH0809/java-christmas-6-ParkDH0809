@@ -1,8 +1,10 @@
 package christmas.controller;
 
+import christmas.domain.Customer;
 import christmas.domain.OrderMenu;
 import christmas.domain.VisitDate;
 import christmas.view.InputView;
+import christmas.view.OutputView;
 
 public class ChristmasController {
     private final InputView inputView = new InputView();
@@ -12,8 +14,11 @@ public class ChristmasController {
     }
 
     private void takeOrder() {
-        takeVisitDate();
-        takeOrderMenu();
+        Customer customer = receiveCustomer();
+    }
+
+    private Customer receiveCustomer() {
+        return Customer.of(takeVisitDate(), takeOrderMenu());
     }
 
     private VisitDate takeVisitDate() {
