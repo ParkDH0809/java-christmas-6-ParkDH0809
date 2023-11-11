@@ -28,4 +28,12 @@ public class OrderMenus {
     public List<OrderMenu> getOrderMenus() {
         return orderMenus;
     }
+
+    int getAmountBeforeDiscount() {
+        int sum = 0;
+        for (OrderMenu orderMenu : orderMenus) {
+            sum += orderMenu.getMenuAmount();
+        }
+        return sum;
+    }
 }

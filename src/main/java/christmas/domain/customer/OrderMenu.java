@@ -34,4 +34,8 @@ public class OrderMenu {
     public Menu getMenuCategory() {
         return Menu.getMenuCategory(menuName);
     }
+
+    public int getMenuAmount() {
+        return Menu.getMenuAmount(menuName) * orderNumber;
+    }
 }

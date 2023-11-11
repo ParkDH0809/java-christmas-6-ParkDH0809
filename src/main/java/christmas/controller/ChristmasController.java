@@ -15,6 +15,7 @@ public class ChristmasController {
         Customer customer = receiveCustomer();
         printEventPreviewPhrase(customer);
         printOrderMenu(customer);
+        printOrderAmount(customer);
     }
 
     private Customer receiveCustomer() {
@@ -38,5 +39,9 @@ public class ChristmasController {
         for (OrderMenu orderMenu : customer.orderMenus()) {
             outputView.outputOrderMenu(orderMenu.getMenuName(), orderMenu.getOrderNumber());
         }
+    }
+
+    private void printOrderAmount(Customer customer) {
+        outputView.outputBeforeDiscount(customer.getAmountBeforeDiscount());
     }
 }

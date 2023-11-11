@@ -22,4 +22,8 @@ public class Customer {
     public List<OrderMenu> orderMenus() {
         return orderMenus.getOrderMenus();
     }
+
+    public int getAmountBeforeDiscount() {
+        return orderMenus.getAmountBeforeDiscount();
+    }
 }
