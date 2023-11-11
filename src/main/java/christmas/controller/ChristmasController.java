@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.customer.Customer;
-import christmas.domain.customer.OrderMenu;
+import christmas.domain.customer.OrderMenus;
 import christmas.domain.customer.VisitDate;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -16,15 +16,15 @@ public class ChristmasController {
     }
 
     private Customer receiveCustomer() {
-        return Customer.of(takeVisitDate(), takeOrderMenu());
+        return Customer.of(takeVisitDate(), takeOrderMenus());
     }
 
     private VisitDate takeVisitDate() {
         return VisitDate.from(inputView.inputVisitDate());
     }
 
-    private OrderMenu takeOrderMenu() {
-        return OrderMenu.from(inputView.inputOrderMenu());
+    private OrderMenus takeOrderMenus() {
+        return OrderMenus.from(inputView.inputOrderMenu());
     }
 
     private void printEventPreviewPhrase(Customer customer) {

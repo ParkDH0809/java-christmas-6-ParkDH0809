@@ -2,15 +2,15 @@ package christmas.domain.customer;
 
 public class Customer {
     private final VisitDate visitDate;
-    private final OrderMenu orderMenu;
+    private final OrderMenus orderMenus;
 
-    private Customer(VisitDate visitDate, OrderMenu orderMenu) {
+    private Customer(VisitDate visitDate, OrderMenus orderMenus) {
         this.visitDate = visitDate;
-        this.orderMenu = orderMenu;
+        this.orderMenus = orderMenus;
     }
 
-    public static Customer of(VisitDate visitDate, OrderMenu orderMenu) {
-        return new Customer(visitDate, orderMenu);
+    public static Customer of(VisitDate visitDate, OrderMenus orderMenus) {
+        return new Customer(visitDate, orderMenus);
     }
 
     public int visitDate() {

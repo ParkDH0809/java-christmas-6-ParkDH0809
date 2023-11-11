@@ -1,14 +1,31 @@
 package christmas.domain.customer;
 
-import java.util.HashMap;
+import christmas.domain.Menu;
 
 public class OrderMenu {
-    private final HashMap<String, Integer> orderContents;
+    private final String menuName;
+    private final int orderNumber;
+
     private OrderMenu(String input) {
-        orderContents = new OrderMenuValidator().validate(input);
+        new OrderMenuValidator().validate(input);
+        String[] result = splitInput(input);
+        this.menuName = result[0];
+        this.orderNumber = Integer.parseInt(result[1]);
+    }
+
+    private String[] splitInput(String input) {
+        return input.split("-");
     }
 
     public static OrderMenu from(String input) {
         return new OrderMenu(input);
+    }
+
+    public Menu getMenuCategory() {
+        return Menu.getMenuCategory(menuName);
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
     }
 }
