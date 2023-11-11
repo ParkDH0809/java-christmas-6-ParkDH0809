@@ -8,13 +8,11 @@ import christmas.view.OutputView;
 
 public class ChristmasController {
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public void startProgram() {
-        takeOrder();
-    }
-
-    private void takeOrder() {
         Customer customer = receiveCustomer();
+        printEventPreviewPhrase(customer);
     }
 
     private Customer receiveCustomer() {
@@ -27,5 +25,9 @@ public class ChristmasController {
 
     private OrderMenu takeOrderMenu() {
         return OrderMenu.from(inputView.inputOrderMenu());
+    }
+
+    private void printEventPreviewPhrase(Customer customer) {
+        outputView.outputEventPreviewPhrase(customer.visitDate());
     }
 }

@@ -43,4 +43,8 @@ public class VisitDate {
     private int stringToInt(String input) {
         return Integer.parseInt(input);
     }
+
+    public int visitDate() {
+        return visitDate;
+    }
 }

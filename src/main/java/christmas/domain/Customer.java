@@ -1,7 +1,5 @@
 package christmas.domain;
 
-
-
 public class Customer {
     private VisitDate visitDate;
     private OrderMenu orderMenu;
@@ -13,5 +11,9 @@ public class Customer {
 
     public static Customer of(VisitDate visitDate, OrderMenu orderMenu) {
         return new Customer(visitDate, orderMenu);
+    }
+
+    public int visitDate() {
+        return visitDate.visitDate();
     }
 }
