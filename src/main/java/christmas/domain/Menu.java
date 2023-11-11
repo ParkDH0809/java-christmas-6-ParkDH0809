@@ -37,4 +37,8 @@ public enum Menu {
                 .findFirst()
                 .orElse(null);
     }
+
+    public static int getMenuAmount(String menuName) {
+        return getMenuCategory(menuName).menu.get(menuName);
+    }
 }
