@@ -5,6 +5,8 @@ public class OutputView {
     private static final String OUTPUT_ORDER_MENU_TITLE = "\n<주문 메뉴>";
     private static final String OUTPUT_ORDER_MENU = "%s %d개\n";
     private static final String OUTPUT_BEFORE_DISCOUNT = "\n<할인 전 총주문 금액>\n%,d원\n";
+    private static final String OUTPUT_PRESENT_EVENT_TITLE = "\n<증정 메뉴>";
+    private static final String OUTPUT_NONE = "없음";
 
     public void outputEventPreviewPhrase(int number) {
         System.out.printf(OUTPUT_EVENT_PREVIEW_PHRASE, number);
@@ -20,5 +22,13 @@ public class OutputView {
 
     public void outputBeforeDiscount(int number) {
         System.out.printf(OUTPUT_BEFORE_DISCOUNT, number);
+    }
+
+    public void outputPresentEventTitle() {
+        System.out.println(OUTPUT_PRESENT_EVENT_TITLE);
+    }
+
+    public void outputNone() {
+        System.out.println(OUTPUT_NONE);
     }
 }

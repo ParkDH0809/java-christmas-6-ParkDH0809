@@ -12,5 +12,15 @@ public class EventController {
 
     public void provideEvent(Customer customer) {
         Event event = Event.from(customer);
+        printPresent(event);
+    }
+
+    private void printPresent(Event event) {
+        outputView.outputPresentEventTitle();
+        if(event.givePresent()) {
+            outputView.outputOrderMenu(event.giftMenu(), event.giftNumber());
+            return;
+        }
+        outputView.outputNone();
     }
 }
