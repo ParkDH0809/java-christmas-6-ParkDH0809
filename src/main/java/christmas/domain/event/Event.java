@@ -1,6 +1,8 @@
 package christmas.domain.event;
 
 import christmas.domain.customer.Customer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Event {
     Customer customer;
@@ -22,5 +24,18 @@ public class Event {
 
     public int giftNumber() {
         return new PresentEvent().giftNumber();
+    }
+
+    public List<OfferedEvent> getEventBenefit() {
+        List<OfferedEvent> offeredEvents = new ArrayList<>();
+        checkDDayEvent(offeredEvents);
+        return offeredEvents;
+    }
+
+    private void checkDDayEvent(List<OfferedEvent> offeredEvents) {
+        ChristmasDDayEvent christmasDDayEvent = new ChristmasDDayEvent();
+        if (christmasDDayEvent.isWithinPeriod(customer.visitDate())) {
+            offeredEvents.add(christmasDDayEvent.getDDayEventBenefit(customer.visitDate()));
+        }
     }
 }
