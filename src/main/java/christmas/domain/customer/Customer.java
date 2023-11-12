@@ -1,5 +1,6 @@
 package christmas.domain.customer;
 
+import christmas.domain.Menu;
 import java.util.List;
 
 public class Customer {
@@ -25,5 +26,13 @@ public class Customer {
 
     public int getAmountBeforeDiscount() {
         return orderMenus.getAmountBeforeDiscount();
+    }
+
+    public int getNumberOfMainMenu() {
+        return orderMenus.getNumberOfCategory(Menu.MAIN);
+    }
+
+    public int getNumberOfDesertMenu() {
+        return orderMenus.getNumberOfCategory(Menu.DESSERT);
     }
 }

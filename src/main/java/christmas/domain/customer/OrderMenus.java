@@ -1,6 +1,7 @@
 package christmas.domain.customer;
 
 import christmas.constants.InputRule;
+import christmas.domain.Menu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,15 @@ public class OrderMenus {
         int sum = 0;
         for (OrderMenu orderMenu : orderMenus) {
             sum += orderMenu.getMenuAmount();
+        }
+        return sum;
+    }
+
+    int getNumberOfCategory(Menu menu) {
+        int sum = 0;
+        for (OrderMenu orderMenu : orderMenus) {
+            if(orderMenu.getMenuCategory().equals(menu))
+                sum += orderMenu.getOrderNumber();
         }
         return sum;
     }
