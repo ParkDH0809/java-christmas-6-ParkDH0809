@@ -88,4 +88,12 @@ public class Event {
         }
         return customer.getAmountBeforeDiscount() - totalDiscountAmount + 25000;
     }
+
+    public String getBadge() {
+        int totalDiscountAmount = 0;
+        for (OfferedEvent offeredEvent : offeredEvents) {
+            totalDiscountAmount += offeredEvent.getDiscountAmount();
+        }
+        return Badge.getBadge(totalDiscountAmount);
+    }
 }

@@ -17,6 +17,7 @@ public class EventController {
         printBenefit(event);
         printTotalDiscountAmount(event);
         printEstimatedPaymentAmount(event);
+        printEventBadge(event);
     }
 
     private void printPresent(Event event) {
@@ -43,5 +44,9 @@ public class EventController {
     private void printEstimatedPaymentAmount(Event event) {
         outputView.outputEstimatedAmountTitle();
         outputView.outputEstimatedAmount(event.getEstimatedAmount());
+    }
+
+    private void printEventBadge(Event event) {
+        outputView.outputEventBadge(event.getBadge());
     }
 }
