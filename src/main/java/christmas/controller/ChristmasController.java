@@ -16,6 +16,9 @@ public class ChristmasController {
         printEventPreviewPhrase(customer);
         printOrderMenu(customer);
         printOrderAmount(customer);
+
+        EventController eventController = new EventController(outputView);
+        eventController.provideEvent(customer);
     }
 
     private Customer receiveCustomer() {
