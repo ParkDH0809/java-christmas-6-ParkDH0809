@@ -29,6 +29,7 @@ public class Event {
     public List<OfferedEvent> getEventBenefit() {
         List<OfferedEvent> offeredEvents = new ArrayList<>();
         checkDDayEvent(offeredEvents);
+        checkWeekdayAndWeekendEvent(offeredEvents);
         return offeredEvents;
     }
 
@@ -37,5 +38,23 @@ public class Event {
         if (christmasDDayEvent.isWithinPeriod(customer.visitDate())) {
             offeredEvents.add(christmasDDayEvent.getDDayEventBenefit(customer.visitDate()));
         }
+    }
+
+    private void checkWeekdayAndWeekendEvent(List<OfferedEvent> offeredEvents) {
+        if(Calender.isWeekendDate(customer.visitDate())) {
+            getWeekendEvent(offeredEvents);
+            return;
+        }
+        getWeekdayEvent(offeredEvents);
+    }
+
+    private void getWeekendEvent(List<OfferedEvent> offeredEvents) {
+        WeekendEvent weekendEvent = WeekendEvent.from(customer.getNumberOfMainMenu());
+        offeredEvents.add(weekendEvent.getWeekendEventBenefit());
+    }
+
+    private void getWeekdayEvent(List<OfferedEvent> offeredEvents) {
+        WeekdayEvent weekdayEvent = WeekdayEvent.from(customer.getNumberOfDesertMenu());
+        offeredEvents.add(weekdayEvent.getWeekdayEventBenefit());
     }
 }
