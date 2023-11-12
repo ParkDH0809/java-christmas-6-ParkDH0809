@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.customer.Customer;
 import christmas.domain.event.Event;
+import christmas.domain.event.OfferedEvent;
 import christmas.view.OutputView;
 
 public class EventController {
@@ -13,6 +14,7 @@ public class EventController {
     public void provideEvent(Customer customer) {
         Event event = Event.from(customer);
         printPresent(event);
+        printBenefit(event);
     }
 
     private void printPresent(Event event) {
@@ -22,5 +24,12 @@ public class EventController {
             return;
         }
         outputView.outputNone();
+    }
+
+    private void printBenefit(Event event) {
+        outputView.outputBenefitTitle();
+        for(OfferedEvent offeredEvent : event.getEventBenefit()) {
+            outputView.outputBenefit(offeredEvent.getEventName(), offeredEvent.getDiscountAmount());
+        }
     }
 }

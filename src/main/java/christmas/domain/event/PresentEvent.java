@@ -16,4 +16,8 @@ class PresentEvent {
     int giftNumber() {
         return GIFT_NUMBER;
     }
+
+    OfferedEvent getPresentEventBenefit() {
+        return OfferedEvent.of("증정 이벤트", 25000);
+    }
 }

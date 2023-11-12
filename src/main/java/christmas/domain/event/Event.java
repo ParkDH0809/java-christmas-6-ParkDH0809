@@ -31,6 +31,7 @@ public class Event {
         checkDDayEvent(offeredEvents);
         checkWeekdayAndWeekendEvent(offeredEvents);
         checkSpecialEvent(offeredEvents);
+        checkPresentEvent(offeredEvents);
         return offeredEvents;
     }
 
@@ -62,6 +63,12 @@ public class Event {
     private void checkSpecialEvent(List<OfferedEvent> offeredEvents) {
         if (Calender.isStarDate(customer.visitDate())) {
             offeredEvents.add(new SpecialEvent().getSpecialEventBenefit());
+        }
+    }
+
+    private void checkPresentEvent(List<OfferedEvent> offeredEvents) {
+        if(givePresent()) {
+            offeredEvents.add(new PresentEvent().getPresentEventBenefit());
         }
     }
 }
