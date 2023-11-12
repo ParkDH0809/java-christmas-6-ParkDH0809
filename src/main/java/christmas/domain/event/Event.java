@@ -30,6 +30,7 @@ public class Event {
         List<OfferedEvent> offeredEvents = new ArrayList<>();
         checkDDayEvent(offeredEvents);
         checkWeekdayAndWeekendEvent(offeredEvents);
+        checkSpecialEvent(offeredEvents);
         return offeredEvents;
     }
 
@@ -56,5 +57,11 @@ public class Event {
     private void getWeekdayEvent(List<OfferedEvent> offeredEvents) {
         WeekdayEvent weekdayEvent = WeekdayEvent.from(customer.getNumberOfDesertMenu());
         offeredEvents.add(weekdayEvent.getWeekdayEventBenefit());
+    }
+
+    private void checkSpecialEvent(List<OfferedEvent> offeredEvents) {
+        if (Calender.isStarDate(customer.visitDate())) {
+            offeredEvents.add(new SpecialEvent().getSpecialEventBenefit());
+        }
     }
 }
