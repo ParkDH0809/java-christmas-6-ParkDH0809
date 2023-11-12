@@ -11,6 +11,8 @@ public class OutputView {
     private static final String OUTPUT_BENEFIT = "%s: -%,d원\n";
     private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT_TITLE = "\n<총혜택 금액>";
     private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT = "-%,d원\n";
+    private static final String OUTPUT_ESTIMATED_AMOUNT_TITLE = "\n<할인 후 예상 결제 금액>";
+    private static final String OUTPUT_ESTIMATED_AMOUNT = "%,d원";
 
     public void outputEventPreviewPhrase(int number) {
         System.out.printf(OUTPUT_EVENT_PREVIEW_PHRASE, number);
@@ -50,5 +52,13 @@ public class OutputView {
 
     public void outputTotalBenefitAmount(int number) {
         System.out.printf(OUTPUT_TOTAL_BENEFIT_AMOUNT, number);
+    }
+
+    public void outputEstimatedAmountTitle() {
+        System.out.println(OUTPUT_ESTIMATED_AMOUNT_TITLE);
+    }
+
+    public void outputEstimatedAmount(int number) {
+        System.out.printf(OUTPUT_ESTIMATED_AMOUNT, number);
     }
 }

@@ -80,4 +80,12 @@ public class Event {
         }
         return totalDiscountAmount;
     }
+
+    public int getEstimatedAmount() {
+        int totalDiscountAmount = 0;
+        for (OfferedEvent offeredEvent : offeredEvents) {
+            totalDiscountAmount += offeredEvent.getDiscountAmount();
+        }
+        return customer.getAmountBeforeDiscount() - totalDiscountAmount + 25000;
+    }
 }
