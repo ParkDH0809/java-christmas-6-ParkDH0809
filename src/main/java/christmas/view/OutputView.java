@@ -9,6 +9,8 @@ public class OutputView {
     private static final String OUTPUT_NONE = "없음";
     private static final String OUTPUT_BENEFIT_TITLE = "\n<혜택 내역>";
     private static final String OUTPUT_BENEFIT = "%s: -%,d원\n";
+    private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT_TITLE = "\n<총혜택 금액>";
+    private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT = "-%,d원\n";
 
     public void outputEventPreviewPhrase(int number) {
         System.out.printf(OUTPUT_EVENT_PREVIEW_PHRASE, number);
@@ -40,5 +42,13 @@ public class OutputView {
 
     public void outputBenefit(String string, int number) {
         System.out.printf(OUTPUT_BENEFIT, string, number);
+    }
+
+    public void outputTotalBenefitAmountTitle() {
+        System.out.println(OUTPUT_TOTAL_BENEFIT_AMOUNT_TITLE);
+    }
+
+    public void outputTotalBenefitAmount(int number) {
+        System.out.printf(OUTPUT_TOTAL_BENEFIT_AMOUNT, number);
     }
 }

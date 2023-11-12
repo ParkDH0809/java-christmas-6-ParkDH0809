@@ -15,6 +15,7 @@ public class EventController {
         Event event = Event.from(customer);
         printPresent(event);
         printBenefit(event);
+        printTotalDiscountAmount(event);
     }
 
     private void printPresent(Event event) {
@@ -31,5 +32,10 @@ public class EventController {
         for(OfferedEvent offeredEvent : event.getEventBenefit()) {
             outputView.outputBenefit(offeredEvent.getEventName(), offeredEvent.getDiscountAmount());
         }
+    }
+
+    private void printTotalDiscountAmount(Event event) {
+        outputView.outputTotalBenefitAmountTitle();
+        outputView.outputTotalBenefitAmount(event.getTotalDiscountAmount());
     }
 }

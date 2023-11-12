@@ -6,8 +6,10 @@ import java.util.List;
 
 public class Event {
     Customer customer;
+    List<OfferedEvent> offeredEvents;
     private Event(Customer customer) {
         this.customer = customer;
+        offeredEvents = new ArrayList<>();
     }
 
     public static Event from(Customer customer) {
@@ -27,48 +29,55 @@ public class Event {
     }
 
     public List<OfferedEvent> getEventBenefit() {
-        List<OfferedEvent> offeredEvents = new ArrayList<>();
-        checkDDayEvent(offeredEvents);
-        checkWeekdayAndWeekendEvent(offeredEvents);
-        checkSpecialEvent(offeredEvents);
-        checkPresentEvent(offeredEvents);
+        checkDDayEvent();
+        checkWeekdayAndWeekendEvent();
+        checkSpecialEvent();
+        checkPresentEvent();
         return offeredEvents;
     }
 
-    private void checkDDayEvent(List<OfferedEvent> offeredEvents) {
+    private void checkDDayEvent() {
         ChristmasDDayEvent christmasDDayEvent = new ChristmasDDayEvent();
         if (christmasDDayEvent.isWithinPeriod(customer.visitDate())) {
             offeredEvents.add(christmasDDayEvent.getDDayEventBenefit(customer.visitDate()));
         }
     }
 
-    private void checkWeekdayAndWeekendEvent(List<OfferedEvent> offeredEvents) {
+    private void checkWeekdayAndWeekendEvent() {
         if(Calender.isWeekendDate(customer.visitDate())) {
-            getWeekendEvent(offeredEvents);
+            getWeekendEvent();
             return;
         }
-        getWeekdayEvent(offeredEvents);
+        getWeekdayEvent();
     }
 
-    private void getWeekendEvent(List<OfferedEvent> offeredEvents) {
+    private void getWeekendEvent() {
         WeekendEvent weekendEvent = WeekendEvent.from(customer.getNumberOfMainMenu());
         offeredEvents.add(weekendEvent.getWeekendEventBenefit());
     }
 
-    private void getWeekdayEvent(List<OfferedEvent> offeredEvents) {
+    private void getWeekdayEvent() {
         WeekdayEvent weekdayEvent = WeekdayEvent.from(customer.getNumberOfDesertMenu());
         offeredEvents.add(weekdayEvent.getWeekdayEventBenefit());
     }
 
-    private void checkSpecialEvent(List<OfferedEvent> offeredEvents) {
+    private void checkSpecialEvent() {
         if (Calender.isStarDate(customer.visitDate())) {
             offeredEvents.add(new SpecialEvent().getSpecialEventBenefit());
         }
     }
 
-    private void checkPresentEvent(List<OfferedEvent> offeredEvents) {
+    private void checkPresentEvent() {
         if(givePresent()) {
             offeredEvents.add(new PresentEvent().getPresentEventBenefit());
         }
+    }
+
+    public int getTotalDiscountAmount() {
+        int totalDiscountAmount = 0;
+        for (OfferedEvent offeredEvent : offeredEvents) {
+            totalDiscountAmount += offeredEvent.getDiscountAmount();
+        }
+        return totalDiscountAmount;
     }
 }
