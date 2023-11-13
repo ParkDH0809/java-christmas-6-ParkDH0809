@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderMenus {
-     private final List<OrderMenu> orderMenus;
+
+    private final List<OrderMenu> orderMenus;
+
     private OrderMenus(String input) {
         OrderMenusValidator orderMenusValidator = new OrderMenusValidator();
         orderMenusValidator.validate(input);
+
         orderMenus = initOrderMenus(input);
-        orderMenusValidator.validateOther(orderMenus);
+        orderMenusValidator.validateContents(orderMenus);
     }
 
     private List<OrderMenu> initOrderMenus(String input) {
@@ -31,19 +34,13 @@ public class OrderMenus {
     }
 
     int getAmountBeforeDiscount() {
-        int sum = 0;
-        for (OrderMenu orderMenu : orderMenus) {
-            sum += orderMenu.getMenuAmount();
-        }
-        return sum;
+        return orderMenus.stream().mapToInt(OrderMenu::getMenuAmount).sum();
     }
 
     int getNumberOfCategory(Menu menu) {
-        int sum = 0;
-        for (OrderMenu orderMenu : orderMenus) {
-            if(orderMenu.getMenuCategory().equals(menu))
-                sum += orderMenu.getOrderNumber();
-        }
-        return sum;
+        return orderMenus.stream()
+                .filter(order -> order.getMenuCategory().equals(menu))
+                .mapToInt(OrderMenu::getOrderNumber)
+                .sum();
     }
 }
