@@ -10,19 +10,19 @@ class PresentEvent {
     private static final int PRESENT_REQUIREMENT_AMOUNT = 120000;
 
 
-    boolean givePresent(int amount) {
+    boolean isPresentRequirementAmount(int amount) {
         return amount >= PRESENT_REQUIREMENT_AMOUNT;
     }
 
-    String giftMenu() {
+    String getPresentMenu() {
         return PRESENT_MENU;
     }
 
-    int giftNumber() {
+    int getPresentNumber() {
         return PRESENT_NUMBER;
     }
 
-    OfferedEvent getPresentEventBenefit() {
+    public OfferedEvent getPresentEventBenefit() {
         return OfferedEvent.of(PRESENT_EVENT_NAME, Menu.getMenuAmount(PRESENT_MENU));
     }
 }
