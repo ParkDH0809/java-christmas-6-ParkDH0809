@@ -2,7 +2,7 @@ package christmas.domain.event;
 
 import christmas.domain.Menu;
 
-class PresentEvent {
+public class PresentEvent {
 
     private static final String PRESENT_EVENT_NAME = "증정 이벤트";
     private static final String PRESENT_MENU = "샴페인";
@@ -10,15 +10,15 @@ class PresentEvent {
     private static final int PRESENT_REQUIREMENT_AMOUNT = 120000;
 
 
-    boolean isPresentRequirementAmount(int amount) {
+    public boolean isPresentRequirementAmount(int amount) {
         return amount >= PRESENT_REQUIREMENT_AMOUNT;
     }
 
-    String getPresentMenu() {
+    public String getPresentMenu() {
         return PRESENT_MENU;
     }
 
-    int getPresentNumber() {
+    public int getPresentNumber() {
         return PRESENT_NUMBER;
     }
 
