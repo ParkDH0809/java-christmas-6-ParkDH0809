@@ -7,7 +7,6 @@ import java.util.regex.PatternSyntaxException;
 
 class OrderMenuValidator {
 
-
     void validate(String input) {
         validateDelimiterSeparation(input);
         validateContent(input.split(InputRule.FOOD_NUMBER_SEPARATOR.getString()));

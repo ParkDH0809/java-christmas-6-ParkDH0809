@@ -22,7 +22,6 @@ public class OrderMenu {
         return new OrderMenu(input);
     }
 
-
     public String getMenuName() {
         return menuName;
     }

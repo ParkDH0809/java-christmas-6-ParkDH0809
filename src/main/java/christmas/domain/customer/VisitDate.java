@@ -25,14 +25,14 @@ public class VisitDate {
     private void validateNumber(String input) {
         try {
             Integer.parseInt(input);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_DATE.getMessage());
         }
     }
 
     private void validateRange(String input) {
         int date = Integer.parseInt(input);
-        if(date < EVENT_MIN_DATE) {
+        if (date < EVENT_MIN_DATE) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_DATE.getMessage());
         }
         if (date > EVENT_MAX_DATE) {
