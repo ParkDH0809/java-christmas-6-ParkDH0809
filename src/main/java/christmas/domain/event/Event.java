@@ -1,5 +1,6 @@
 package christmas.domain.event;
 
+import christmas.domain.Menu;
 import christmas.domain.customer.Customer;
 import java.util.Collections;
 import java.util.List;
@@ -29,8 +30,10 @@ public class Event {
     }
 
     public int getEstimatedAmount() {
-        if(offeredEvents.stream().anyMatch(event -> event.getEventName().equals("증정 이벤트"))) {
-            return customer.getAmountBeforeDiscount() + getTotalDiscountAmount() + 25000;
+        PresentEvent presentEvent = new PresentEvent();
+        if (presentEvent.isPresentRequirementAmount(customer.getAmountBeforeDiscount())) {
+            return customer.getAmountBeforeDiscount() + getTotalDiscountAmount()
+                    + Menu.getMenuAmount(presentEvent.getPresentMenu());
         }
         return customer.getAmountBeforeDiscount() + getTotalDiscountAmount();
     }
