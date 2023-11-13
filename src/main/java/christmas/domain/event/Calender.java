@@ -6,7 +6,7 @@ public enum Calender {
     STAR_DATE(List.of(3,10,17,24,35,31)),
     WEEKEND_DATE(List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30));
 
-    private List<Integer> eventDates;
+    private final List<Integer> eventDates;
     Calender(List<Integer> eventDates) {
         this.eventDates = eventDates;
     }

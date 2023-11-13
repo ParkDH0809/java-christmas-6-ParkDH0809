@@ -6,8 +6,8 @@ public enum Badge {
     STAR(5000, "별"),
     NONE(0, "없음");
 
-    private int amount;
-    private String name;
+    private final int amount;
+    private final String name;
 
     Badge(int amount, String name) {
         this.amount = amount;
