@@ -15,10 +15,10 @@ public enum Badge {
     }
 
     static String getBadge(int amount) {
-        if(amount >= SANTA.amount) {
+        if (amount >= SANTA.amount) {
             return SANTA.name;
         }
-        if(amount >= TREE.amount) {
+        if (amount >= TREE.amount) {
             return TREE.name;
         }
         if (amount >= STAR.amount) {

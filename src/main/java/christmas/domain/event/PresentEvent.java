@@ -9,7 +9,6 @@ public class PresentEvent {
     private static final int PRESENT_NUMBER = 1;
     private static final int PRESENT_REQUIREMENT_AMOUNT = 120000;
 
-
     public boolean isPresentRequirementAmount(int amount) {
         return amount >= PRESENT_REQUIREMENT_AMOUNT;
     }

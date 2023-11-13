@@ -1,8 +1,10 @@
 package christmas.domain.event;
 
 public class OfferedEvent {
+
     private final String eventName;
     private final int discountAmount;
+
     private OfferedEvent(String eventName, int discountAmount) {
         this.eventName = eventName;
         this.discountAmount = discountAmount;
