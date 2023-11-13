@@ -4,15 +4,22 @@ import christmas.domain.customer.Customer;
 import christmas.domain.event.Event;
 import christmas.domain.event.OfferedEvent;
 import christmas.view.OutputView;
+import java.util.List;
 
 public class EventController {
+
     private final OutputView outputView;
+
     EventController(OutputView outputView) {
         this.outputView = outputView;
     }
 
     public void provideEvent(Customer customer) {
         Event event = Event.from(customer);
+        printEvent(event);
+    }
+
+    private void printEvent(Event event) {
         printPresent(event);
         printBenefit(event);
         printTotalDiscountAmount(event);
@@ -22,8 +29,8 @@ public class EventController {
 
     private void printPresent(Event event) {
         outputView.outputPresentEventTitle();
-        if(event.givePresent()) {
-            outputView.outputOrderMenu(event.giftMenu(), event.giftNumber());
+        if (event.isPresentRequirementAmount()) {
+            outputView.outputOrderMenu(event.givePresentMenu(), event.givePresentNumber());
             return;
         }
         outputView.outputNone();
@@ -31,7 +38,12 @@ public class EventController {
 
     private void printBenefit(Event event) {
         outputView.outputBenefitTitle();
-        for(OfferedEvent offeredEvent : event.getEventBenefit()) {
+        List<OfferedEvent> offeredEvents = event.getEventBenefit();
+        if (offeredEvents.isEmpty()) {
+            outputView.outputNone();
+        }
+
+        for (OfferedEvent offeredEvent : offeredEvents) {
             outputView.outputBenefit(offeredEvent.getEventName(), offeredEvent.getDiscountAmount());
         }
     }
