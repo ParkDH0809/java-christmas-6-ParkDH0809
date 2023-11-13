@@ -9,10 +9,8 @@ public class OutputView {
     private static final String OUTPUT_NONE = "없음";
     private static final String OUTPUT_BENEFIT_TITLE = "\n<혜택 내역>";
     private static final String OUTPUT_BENEFIT = "%s: -%,d원\n";
-    private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT_TITLE = "\n<총혜택 금액>";
-    private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT = "-%,d원\n";
-    private static final String OUTPUT_ESTIMATED_AMOUNT_TITLE = "\n<할인 후 예상 결제 금액>";
-    private static final String OUTPUT_ESTIMATED_AMOUNT = "%,d원\n";
+    private static final String OUTPUT_TOTAL_BENEFIT_AMOUNT = "\n<총혜택 금액>\n-%,d원\n";
+    private static final String OUTPUT_ESTIMATED_AMOUNT = "\n<할인 후 예상 결제 금액>\n%,d원\n";
     private static final String OUTPUT_EVENT_BADGE = "\n<12월 이벤트 배지>\n%s\n";
 
     public void outputEventPreviewPhrase(int number) {
@@ -47,16 +45,8 @@ public class OutputView {
         System.out.printf(OUTPUT_BENEFIT, string, number);
     }
 
-    public void outputTotalBenefitAmountTitle() {
-        System.out.println(OUTPUT_TOTAL_BENEFIT_AMOUNT_TITLE);
-    }
-
     public void outputTotalBenefitAmount(int number) {
         System.out.printf(OUTPUT_TOTAL_BENEFIT_AMOUNT, number);
-    }
-
-    public void outputEstimatedAmountTitle() {
-        System.out.println(OUTPUT_ESTIMATED_AMOUNT_TITLE);
     }
 
     public void outputEstimatedAmount(int number) {

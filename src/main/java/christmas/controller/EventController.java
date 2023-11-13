@@ -37,12 +37,10 @@ public class EventController {
     }
 
     private void printTotalDiscountAmount(Event event) {
-        outputView.outputTotalBenefitAmountTitle();
         outputView.outputTotalBenefitAmount(event.getTotalDiscountAmount());
     }
 
     private void printEstimatedPaymentAmount(Event event) {
-        outputView.outputEstimatedAmountTitle();
         outputView.outputEstimatedAmount(event.getEstimatedAmount());
     }
 
