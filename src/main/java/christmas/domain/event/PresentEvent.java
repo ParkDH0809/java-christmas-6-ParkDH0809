@@ -1,23 +1,28 @@
 package christmas.domain.event;
 
+import christmas.domain.Menu;
+
 class PresentEvent {
-    private static final int GIFT_AMOUNT = 120000;
-    private final String GIFT_MENU = "샴페인";
-    private final int GIFT_NUMBER = 1;
+
+    private static final String PRESENT_EVENT_NAME = "증정 이벤트";
+    private static final String PRESENT_MENU = "샴페인";
+    private static final int PRESENT_NUMBER = 1;
+    private static final int PRESENT_REQUIREMENT_AMOUNT = 120000;
+
 
     boolean givePresent(int amount) {
-        return amount >= GIFT_AMOUNT;
+        return amount >= PRESENT_REQUIREMENT_AMOUNT;
     }
 
     String giftMenu() {
-        return GIFT_MENU;
+        return PRESENT_MENU;
     }
 
     int giftNumber() {
-        return GIFT_NUMBER;
+        return PRESENT_NUMBER;
     }
 
     OfferedEvent getPresentEventBenefit() {
-        return OfferedEvent.of("증정 이벤트", 25000);
+        return OfferedEvent.of(PRESENT_EVENT_NAME, Menu.getMenuAmount(PRESENT_MENU));
     }
 }
