@@ -20,9 +20,7 @@ public class Event {
     }
 
     public List<OfferedEvent> getEventBenefit() {
-        if (!customer.isTargetForEvent()) {
-            return Collections.emptyList();
-        }
+
         return offeredEvents;
     }
 
@@ -31,6 +29,9 @@ public class Event {
     }
 
     public int getEstimatedAmount() {
+        if(offeredEvents.stream().anyMatch(event -> event.getEventName().equals("증정 이벤트"))) {
+            return customer.getAmountBeforeDiscount() + getTotalDiscountAmount() + 25000;
+        }
         return customer.getAmountBeforeDiscount() + getTotalDiscountAmount();
     }
 

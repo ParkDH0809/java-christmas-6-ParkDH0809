@@ -2,6 +2,7 @@ package christmas.domain.event;
 
 import christmas.domain.customer.Customer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventChecker {
@@ -18,6 +19,9 @@ public class EventChecker {
 
     List<OfferedEvent> generateEventResult() {
         List<OfferedEvent> offeredEvents = new ArrayList<>();
+        if (!customer.isTargetForEvent()) {
+            return Collections.emptyList();
+        }
         checkEvent(offeredEvents);
         return offeredEvents;
     }
