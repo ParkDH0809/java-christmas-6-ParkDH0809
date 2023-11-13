@@ -17,8 +17,7 @@ public class ChristmasController {
         printOrderMenu(customer);
         printOrderAmount(customer);
 
-        EventController eventController = new EventController(outputView);
-        eventController.provideEvent(customer);
+        new EventController(outputView).provideEvent(customer);
     }
 
     private Customer receiveCustomer() {
@@ -26,11 +25,21 @@ public class ChristmasController {
     }
 
     private VisitDate takeVisitDate() {
-        return VisitDate.from(inputView.inputVisitDate());
+        try {
+            return VisitDate.from(inputView.inputVisitDate());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return takeVisitDate();
+        }
     }
 
     private OrderMenus takeOrderMenus() {
-        return OrderMenus.from(inputView.inputOrderMenu());
+        try {
+            return OrderMenus.from(inputView.inputOrderMenu());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return takeOrderMenus();
+        }
     }
 
     private void printEventPreviewPhrase(Customer customer) {
