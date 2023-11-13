@@ -41,7 +41,7 @@ class OrderMenuValidator {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
 
