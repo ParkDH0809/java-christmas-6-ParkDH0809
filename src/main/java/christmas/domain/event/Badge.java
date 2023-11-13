@@ -1,9 +1,9 @@
 package christmas.domain.event;
 
 public enum Badge {
-    SANTA(20000, "산타"),
-    TREE(10000, "트리"),
-    STAR(5000, "별"),
+    SANTA(-20000, "산타"),
+    TREE(-10000, "트리"),
+    STAR(-5000, "별"),
     NONE(0, "없음");
 
     private final int amount;
@@ -14,14 +14,14 @@ public enum Badge {
         this.name = name;
     }
 
-    static String getBadge(int amount) {
-        if (amount >= SANTA.amount) {
+    static String getBadge(int discountAmount) {
+        if (discountAmount <= SANTA.amount) {
             return SANTA.name;
         }
-        if (amount >= TREE.amount) {
+        if (discountAmount <= TREE.amount) {
             return TREE.name;
         }
-        if (amount >= STAR.amount) {
+        if (discountAmount <= STAR.amount) {
             return STAR.name;
         }
         return NONE.name;
