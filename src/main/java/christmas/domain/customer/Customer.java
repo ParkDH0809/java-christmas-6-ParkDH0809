@@ -4,6 +4,9 @@ import christmas.domain.Menu;
 import java.util.List;
 
 public class Customer {
+
+    private static final int EVENT_REQUIREMENT_AMOUNT = 10000;
+
     private final VisitDate visitDate;
     private final OrderMenus orderMenus;
 
@@ -34,5 +37,9 @@ public class Customer {
 
     public int getNumberOfDesertMenu() {
         return orderMenus.getNumberOfCategory(Menu.DESSERT);
+    }
+
+    public boolean isTargetForEvent() {
+        return getAmountBeforeDiscount() >= EVENT_REQUIREMENT_AMOUNT;
     }
 }

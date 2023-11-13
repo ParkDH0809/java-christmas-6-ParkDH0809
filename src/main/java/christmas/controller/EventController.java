@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.customer.Customer;
 import christmas.domain.event.Event;
 import christmas.domain.event.OfferedEvent;
+import christmas.domain.event.PresentEvent;
 import christmas.view.OutputView;
 import java.util.List;
 
@@ -16,21 +17,27 @@ public class EventController {
 
     public void provideEvent(Customer customer) {
         Event event = Event.from(customer);
-        printEvent(event);
+        printEvent(event, customer);
     }
 
-    private void printEvent(Event event) {
-        printPresent(event);
+    private void printEvent(Event event, Customer customer) {
+        printPresent(customer);
         printBenefit(event);
         printTotalDiscountAmount(event);
         printEstimatedPaymentAmount(event);
         printEventBadge(event);
     }
 
-    private void printPresent(Event event) {
+    private void printPresent(Customer customer) {
         outputView.outputPresentEventTitle();
-        if (event.isPresentRequirementAmount()) {
-            outputView.outputOrderMenu(event.givePresentMenu(), event.givePresentNumber());
+        printPresentContent(customer);
+    }
+
+    private void printPresentContent(Customer customer) {
+        PresentEvent presentEvent = new PresentEvent();
+        if (presentEvent.isPresentRequirementAmount(customer.getAmountBeforeDiscount())) {
+            outputView.outputOrderMenu(presentEvent.getPresentMenu(),
+                    presentEvent.getPresentNumber());
             return;
         }
         outputView.outputNone();
