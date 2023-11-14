@@ -1,10 +1,12 @@
 package christmas.domain.customer;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class OrderMenusTest {
@@ -63,5 +65,16 @@ public class OrderMenusTest {
     void testOrderMenusInput(String input) {
         assertThatCode(() -> OrderMenus.from(input))
                 .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @DisplayName("주문 가격 테스트 - 할인 전 금액 계산 확인")
+    @CsvSource(value = {
+            "양송이수프-2,티본스테이크-2,아이스크림-2,레드와인-1:192000",
+            "타파스-2,제로콜라-3:20000",
+            "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1:142000",}, delimiter = ':')
+    void testOrderMenusTotalAmountBeforeDiscount(String input, int value) {
+        OrderMenus orderMenus = OrderMenus.from(input);
+        assertThat(orderMenus.getAmountBeforeDiscount()).isEqualTo(value);
     }
 }
