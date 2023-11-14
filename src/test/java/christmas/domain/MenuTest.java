@@ -1,11 +1,13 @@
 package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class MenuTest {
+
     @ParameterizedTest
     @DisplayName("메뉴 테스트 - 존재하는 메뉴인지 확인")
     @CsvSource(value = {
@@ -21,7 +23,7 @@ public class MenuTest {
             "타파스:APPETIZER", "양송이수프:APPETIZER",
             "크리스마스파스타:MAIN", "바비큐립:MAIN",
             "초코케이크:DESSERT", "아이스크림:DESSERT",
-            "제로콜라:DRINK", "샴페인:DRINK" }, delimiter = ':')
+            "제로콜라:DRINK", "샴페인:DRINK"}, delimiter = ':')
     void testMenuCategory(String input, Menu result) {
         assertThat(Menu.getMenuCategory(input)).isEqualTo(result);
     }

@@ -18,7 +18,4 @@ public enum InputRule {
     public int getNumber() {
         return Integer.parseInt(string);
     }
-
-
-
 }

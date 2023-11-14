@@ -2,7 +2,6 @@ package christmas.domain.event;
 
 import christmas.domain.Menu;
 import christmas.domain.customer.Customer;
-import java.util.Collections;
 import java.util.List;
 
 public class Event {
@@ -21,7 +20,6 @@ public class Event {
     }
 
     public List<OfferedEvent> getEventBenefit() {
-
         return offeredEvents;
     }
 

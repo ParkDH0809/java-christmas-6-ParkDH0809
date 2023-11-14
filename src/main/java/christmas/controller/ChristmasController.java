@@ -8,6 +8,7 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class ChristmasController {
+
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 

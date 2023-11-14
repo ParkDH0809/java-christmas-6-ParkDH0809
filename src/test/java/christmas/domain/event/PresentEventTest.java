@@ -31,6 +31,7 @@ public class PresentEventTest {
     @DisplayName("증정 이벤트 테스트 - 정보 확인")
     void testPresentEventBenefit() {
         OfferedEvent offeredEvent = OfferedEvent.of("증정 이벤트", 25000);
-        assertThat(offeredEvent).usingRecursiveComparison().isEqualTo(presentEvent.getPresentEventBenefit());
+        assertThat(offeredEvent).usingRecursiveComparison()
+                .isEqualTo(presentEvent.getPresentEventBenefit());
     }
 }

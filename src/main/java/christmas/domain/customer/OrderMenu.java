@@ -4,6 +4,7 @@ import christmas.constants.InputRule;
 import christmas.domain.Menu;
 
 public class OrderMenu {
+
     private final String menuName;
     private final int orderNumber;
 

@@ -8,13 +8,14 @@ import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 
 public class OrderMenusValidator {
+
     void validate(String input) {
         validateContainsSpace(input);
         validateDelimiterSeparation(input);
     }
 
     private void validateContainsSpace(String input) {
-        if(input.contains(" ")) {
+        if (input.contains(" ")) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
@@ -35,7 +36,7 @@ public class OrderMenusValidator {
 
     private void validateOnlyDrink(List<OrderMenu> orderMenus) {
         for (OrderMenu orderMenu : orderMenus) {
-            if(!isDrink(orderMenu)) {
+            if (!isDrink(orderMenu)) {
                 return;
             }
         }
@@ -47,13 +48,14 @@ public class OrderMenusValidator {
     }
 
     private void validateDuplicate(List<OrderMenu> orderMenus) {
-        if(orderMenus.stream().map(OrderMenu::getMenuName).collect(Collectors.toSet()).size() != orderMenus.size()) {
+        if (orderMenus.stream().map(OrderMenu::getMenuName).collect(Collectors.toSet()).size()
+                != orderMenus.size()) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_INVALID_MENU.getMessage());
         }
     }
 
     private void validateTotalOrderNumber(List<OrderMenu> orderMenus) {
-        if(calculateTotalOrder(orderMenus) > InputRule.MAX_ORDER_NUMBER.getNumber()) {
+        if (calculateTotalOrder(orderMenus) > InputRule.MAX_ORDER_NUMBER.getNumber()) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_ORDER_NUMBER.getMessage());
         }
     }

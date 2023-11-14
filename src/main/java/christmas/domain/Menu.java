@@ -22,6 +22,7 @@ public enum Menu {
             "샴페인", 25000));
 
     private final Map<String, Integer> menu;
+
     Menu(Map<String, Integer> menu) {
         this.menu = menu;
     }
