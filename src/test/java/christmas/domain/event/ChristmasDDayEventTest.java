@@ -18,13 +18,13 @@ public class ChristmasDDayEventTest {
     @Test
     @DisplayName("크리스마스 디데이 이벤트 테스트 - 적용이 되는 날짜인 경우")
     void testIsWithinPeriod() {
-        assertThat(christmasDDayEvent.isWithinPeriod(25)).isEqualTo(true);
+        assertThat(christmasDDayEvent.isWithinPeriod(25)).isTrue();
     }
 
     @Test
     @DisplayName("크리스마스 디데이 이벤트 테스트 - 적용이 되지 않는 날짜인 경우")
     void testIsNotWithinPeriod() {
-        assertThat(christmasDDayEvent.isWithinPeriod(26)).isEqualTo(false);
+        assertThat(christmasDDayEvent.isWithinPeriod(26)).isFalse();
     }
 
     @Test

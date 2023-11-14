@@ -12,27 +12,27 @@ public class CalenderTest {
     @DisplayName("날짜 테스트 - 스타 데이가 맞는 경우")
     @ValueSource(strings = {"3", "10", "17", "24", "25", "31"})
     void testIsStarDate(int input) {
-        assertThat(Calender.isStarDate(input)).isEqualTo(true);
+        assertThat(Calender.isStarDate(input)).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("날짜 테스트 - 스타 데이가 아닌 경우")
     @ValueSource(strings = {"2", "4", "11", "23", "26", "30"})
     void testIsNotStarDate(int input) {
-        assertThat(Calender.isStarDate(input)).isEqualTo(false);
+        assertThat(Calender.isStarDate(input)).isFalse();
     }
 
     @ParameterizedTest
     @DisplayName("날짜 테스트 - 평일인 경우")
     @ValueSource(strings = {"4", "12", "25", "28", "14", "7"})
     void testIsWeekdayDate(int input) {
-        assertThat(Calender.isWeekendDate(input)).isEqualTo(false);
+        assertThat(Calender.isWeekendDate(input)).isFalse();
     }
 
     @ParameterizedTest
     @DisplayName("날짜 테스트 - 주말인 경우")
     @ValueSource(strings = {"1", "8", "16", "22", "29", "30"})
     void testIsWeekendDate(int input) {
-        assertThat(Calender.isWeekendDate(input)).isEqualTo(true);
+        assertThat(Calender.isWeekendDate(input)).isTrue();
     }
 }
