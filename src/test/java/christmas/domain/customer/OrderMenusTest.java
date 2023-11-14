@@ -19,7 +19,8 @@ public class OrderMenusTest {
             "제로콜라-2.타파스-1",
             "티본스테이크-4, 샴페인-3, 시저샐러드-2",
             " ,바비큐립-3,아이스크림-2",
-            "크리스마스파스타, 해산물파스타-1"})
+            "크리스마스파스타, 해산물파스타-1",
+            "타파스3"})
     void testOrderMenusFormatException(String input) {
         assertThatThrownBy(() -> OrderMenus.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -48,11 +49,13 @@ public class OrderMenusTest {
     }
 
     @ParameterizedTest
-    @DisplayName("메뉴 입력 테스트 - 20개 초과 주문을 한 경우")
+    @DisplayName("메뉴 입력 테스트 - 주문 개수가 범위를 벗어난 경우")
     @ValueSource(strings = {
             "초코케이크-8,제로콜라-8,타파스-8",
             "해산물파스타-6,크리스마스파스타-12,아이스크림-4",
-            "초코케이크-20,아이스크림-1"})
+            "초코케이크-20,아이스크림-1",
+            "바비큐립-21",
+            "타파스-0"})
     void testOrderMenusOverNumberException(String input) {
         assertThatThrownBy(() -> OrderMenus.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
