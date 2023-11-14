@@ -4,7 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.domain.Menu;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -76,5 +78,17 @@ public class OrderMenusTest {
     void testOrderMenusTotalAmountBeforeDiscount(String input, int value) {
         OrderMenus orderMenus = OrderMenus.from(input);
         assertThat(orderMenus.getAmountBeforeDiscount()).isEqualTo(value);
+    }
+
+    @Test
+    @DisplayName("동일 카테고리 메뉴 개수 반환")
+    void testOrderMenusNumberOfCategory() {
+        String input = "티본스테이크-3,바비큐립-1,초코케이크-2,제로콜라-1,양송이수프-2,레드와인-2";
+        OrderMenus orderMenus = OrderMenus.from(input);
+
+        assertThat((orderMenus.getNumberOfCategory(Menu.APPETIZER))).isEqualTo(2);
+        assertThat((orderMenus.getNumberOfCategory(Menu.MAIN))).isEqualTo(4);
+        assertThat((orderMenus.getNumberOfCategory(Menu.DESSERT))).isEqualTo(2);
+        assertThat((orderMenus.getNumberOfCategory(Menu.DRINK))).isEqualTo(3);
     }
 }
