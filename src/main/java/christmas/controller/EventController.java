@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.customer.Customer;
-import christmas.domain.event.Event;
+import christmas.domain.event.Events;
 import christmas.domain.event.OfferedEvent;
 import christmas.domain.event.PresentEvent;
 import christmas.view.OutputView;
@@ -16,11 +16,11 @@ public class EventController {
     }
 
     public void provideEvent(Customer customer) {
-        Event event = Event.from(customer);
+        Events event = Events.from(customer);
         printEvent(event, customer);
     }
 
-    private void printEvent(Event event, Customer customer) {
+    private void printEvent(Events event, Customer customer) {
         printPresent(customer);
         printBenefit(event);
         printTotalDiscountAmount(event);
@@ -43,7 +43,7 @@ public class EventController {
         outputView.outputNone();
     }
 
-    private void printBenefit(Event event) {
+    private void printBenefit(Events event) {
         outputView.outputBenefitTitle();
         List<OfferedEvent> offeredEvents = event.getEventBenefit();
         if (offeredEvents.isEmpty()) {
@@ -55,15 +55,15 @@ public class EventController {
         }
     }
 
-    private void printTotalDiscountAmount(Event event) {
+    private void printTotalDiscountAmount(Events event) {
         outputView.outputTotalBenefitAmount(event.getTotalDiscountAmount());
     }
 
-    private void printEstimatedPaymentAmount(Event event) {
+    private void printEstimatedPaymentAmount(Events event) {
         outputView.outputEstimatedAmount(event.getEstimatedAmount());
     }
 
-    private void printEventBadge(Event event) {
+    private void printEventBadge(Events event) {
         outputView.outputEventBadge(event.getBadge());
     }
 }

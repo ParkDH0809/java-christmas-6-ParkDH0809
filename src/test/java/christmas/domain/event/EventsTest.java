@@ -10,9 +10,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class EventTest {
+public class EventsTest {
 
-    static Event event;
+    static Events event;
     static Customer customer;
     static List<OfferedEvent> offeredEvents;
 
@@ -22,7 +22,7 @@ public class EventTest {
                 VisitDate.from("3"),
                 OrderMenus.from("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")
         );
-        event = Event.from(customer);
+        event = Events.from(customer);
         offeredEvents = event.getEventBenefit();
     }
 
