@@ -1,3 +1,36 @@
+# 기능 설명
+| 패키지명            | 클래스명                | 기능               |  
+|-----------------|---------------------|------------------|
+| constants       | ExceptionMessage    | 예외 문구 관리         |
+|                 | InputRule           | 입력 규칙 관리         |
+|                 |                     |                  |
+| controller      | ChristmasController | 입력 관련 작업 수행      |
+|                 | EventController     | 이벤트 관련 작업 수행     |
+|                 |                     |                  |
+| domain          | Menu                | 식당 메뉴 정보 관리      |
+|                 |                     |                  |
+| domain-customer | Customer            | 손님에 대한 정보 관리     |
+|                 | OrderMenu           | 각 주문 메뉴 관리       |
+|                 | OrderMenuValidator  | OrderMenu 입력값 검증 |
+|                 | OrderMenus          | 주문 메뉴 총 관리       |
+|                 | OrderMenusValidator | OrderMenu 입력값 검증 |
+|                 | VisitDate           | 방문 날짜 정보 관리      |
+|                 |                     |                  |
+| domain-event    | Badge               | 뱃지 정보 관리         |
+|                 | Calender            | 이벤트 날짜 정보 관리     |
+|                 | Events              | 전체 이벤트 관리        |
+|                 | OfferedEvent        | 적용된 이벤트 포맷       |
+|                 | EvnetCheckse        | 적용된 이벤트 확인       |
+|                 | ChristmasDDayEvent  | 크리스마스 디데이 이벤트 관리 |
+|                 | PresentEvent        | 증정 이벤트 관리        |
+|                 | SpecialEvent        | 특별 할인 이벤트 관리     |
+|                 | WeekdayEvent        | 평일 할인 이벤트 관리     |
+|                 | WeekendEvent        | 주말 할인 이벤트 관리     |
+|                 |                     |                  |
+| view            | InputView           | 내용 업력 관리         |
+|                 | OutputView          | 내용 출력 관리         |
+
+
 # 기능 요구 사항 정리
 ## 메뉴
 - 애피타이저: 양송이수프(6,000), 타파스(5,500), 시저샐러드(8,000)
@@ -52,9 +85,9 @@
 - [X] 주문 메뉴를 출력한다.
 - [X] 할인 전 총주문 금액을 출력한다.
 - [X] 증정 메뉴를 출력한다.
-  - [ ] 적용된 해당 사항이 없는 경우 "없음"을 출력한다.
+  - [X] 적용된 해당 사항이 없는 경우 "없음"을 출력한다.
 - [X] 혜택 내역을 출력한다.
-  - [ ] 고객에게 적용된 이벤트 내역만 출력한다.
+  - [X] 고객에게 적용된 이벤트 내역만 출력한다.
   - [X] 여러 개의 이벤트가 적용된 경우, 출력 순서는 자유롭게 한다.
   - [X] 적용된 해당 사항이 없는 경우 "없음"을 출력한다.
 - [X] 총혜택 금액을 출력한다.
@@ -95,7 +128,7 @@
 - [X] 12만원 이하인 경우 이벤트를 적용하지 않는다.
 
 ### offeredEvent
-- [X] 혜택이 적용된 이벤트 원시타입
+- [X] 혜택이 적용된 이벤트 포맷
 
 ## badge
 - [X] 뱃지 정보를 가진다.
