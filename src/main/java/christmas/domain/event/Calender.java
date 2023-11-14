@@ -3,7 +3,7 @@ package christmas.domain.event;
 import java.util.List;
 
 public enum Calender {
-    STAR_DATE(List.of(3, 10, 17, 24, 35, 31)),
+    STAR_DATE(List.of(3, 10, 17, 24, 25, 31)),
     WEEKEND_DATE(List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30));
 
     private final List<Integer> eventDates;
